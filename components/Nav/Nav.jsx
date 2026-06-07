@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 import styles from "./Nav.module.css";
+import { LANGS } from "@/lib/translations";
+import { useT } from "@/components/LanguageProvider/LanguageProvider";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const { lang, setLang, t } = useT();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -20,14 +23,35 @@ export default function Nav() {
           lizavetron
         </a>
         <nav className={styles.links} aria-label="primary">
-          <a href="#about">обо мне</a>
-          <a href="#club">клуб</a>
-          <a href="#gallery">атмосфера</a>
-          <a href="#individual">1:1</a>
+          <a href="#about">{t.nav.about}</a>
+          <a href="#club">{t.nav.club}</a>
+          <a href="#gallery">{t.nav.gallery}</a>
+          <a href="#individual">{t.nav.individual}</a>
         </nav>
-        <a href="#pricing" className={styles.cta}>
-          в клуб ♡
-        </a>
+        <div className={styles.right}>
+          <div
+            className={styles.langSwitch}
+            role="group"
+            aria-label={t.nav.langLabel}
+          >
+            {LANGS.map((code) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => setLang(code)}
+                className={`${styles.langBtn} ${
+                  lang === code ? styles.langActive : ""
+                }`}
+                aria-pressed={lang === code}
+              >
+                {code}
+              </button>
+            ))}
+          </div>
+          <a href="#pricing" className={styles.cta}>
+            {t.nav.cta}
+          </a>
+        </div>
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/components/LanguageProvider/LanguageProvider";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -34,7 +35,9 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru" className={`${inter.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

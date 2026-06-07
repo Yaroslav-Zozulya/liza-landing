@@ -1,48 +1,46 @@
+"use client";
+
 import Reveal from "../Reveal/Reveal";
 import styles from "./About.module.css";
+import { useT } from "@/components/LanguageProvider/LanguageProvider";
 
 export default function About() {
+  const { t } = useT();
+
   return (
     <section id="about" className={styles.about}>
       <div className={styles.inner}>
         <Reveal className={styles.photoWrap}>
           <div className={styles.photo}>
             <div className={styles.photoInner} aria-hidden="true">
-              <span className={styles.photoHint}>portrait photo</span>
+              <span className={styles.photoHint}>{t.about.photoHint}</span>
             </div>
             <div className={styles.frame} aria-hidden="true" />
           </div>
           <div className={styles.signature}>
             <span className={styles.line} aria-hidden="true" />
-            <span>est. с любовью</span>
+            <span>{t.about.signature}</span>
           </div>
         </Reveal>
 
         <div className={styles.text}>
           <Reveal>
-            <p className={styles.kicker}>about me</p>
+            <p className={styles.kicker}>{t.about.kicker}</p>
           </Reveal>
           <Reveal delay={120}>
             <h2 className={styles.title}>
-              привет, я <em>Лиза</em>
+              {t.about.titleLead} <em>{t.about.titleEm}</em>
             </h2>
           </Reveal>
           <Reveal delay={240}>
-            <p className={styles.body}>
-              я объединяю хатха-йогу, работу с мышлением и подсознанием, чтобы
-              помогать девушкам находить баланс между крепким телом и спокойным
-              умом.
-            </p>
+            <p className={styles.body}>{t.about.body1}</p>
           </Reveal>
           <Reveal delay={340}>
-            <p className={styles.body}>
-              мой клуб и мои практики — это пространство, где меняя внутреннее
-              состояние, ты мягко и естественно меняешь свою внешнюю реальность.
-            </p>
+            <p className={styles.body}>{t.about.body2}</p>
           </Reveal>
           <Reveal delay={440}>
             <p className={styles.bodyAccent}>
-              если ты чувствуешь отклик — добро пожаловать{" "}
+              {t.about.bodyAccent}{" "}
               <span className={styles.heart} aria-hidden>
                 ♡
               </span>
@@ -51,11 +49,9 @@ export default function About() {
 
           <Reveal delay={560}>
             <ul className={styles.tags}>
-              <li>хатха-йога</li>
-              <li>медитации</li>
-              <li>таро</li>
-              <li>МАК</li>
-              <li>самопрограммирование</li>
+              {t.about.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
             </ul>
           </Reveal>
         </div>

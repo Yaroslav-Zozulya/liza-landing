@@ -33,7 +33,7 @@
   max-width: var(--container);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
@@ -286,16 +286,17 @@
 @media (max-width: 880px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 40px;
     text-align: left;
   }
 
   .photoWrap {
-    order: 2;
+    order: 0;
+    justify-content: flex-start;
   }
 
   .photo {
-    max-width: 360px;
+    max-width: 320px;
   }
 
   .scrollHint {

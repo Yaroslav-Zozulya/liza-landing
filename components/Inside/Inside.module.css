@@ -1,0 +1,189 @@
+.inside {
+  padding: var(--section-y) var(--gutter);
+  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.inside::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.12;
+  margin-bottom: 28px;
+}
+
+.lead {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: var(--text-soft);
+  line-height: 1.55;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.handPoint {
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pillarWrap {
+  height: 100%;
+}
+
+.pillar {
+  position: relative;
+  height: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
+  animation: pillarFloat 7s ease-in-out infinite;
+}
+
+.pillarWrap:nth-child(2) .pillar {
+  animation-delay: -2.3s;
+}
+
+.pillarWrap:nth-child(3) .pillar {
+  animation-delay: -4.6s;
+}
+
+.pillar:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-soft);
+  animation-play-state: paused;
+}
+
+.pillarTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pillarNumber {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.pillarIcon {
+  font-size: 24px;
+  color: var(--accent-soft);
+  transition: transform 0.6s ease, color 0.4s ease;
+}
+
+.pillar:hover .pillarIcon {
+  transform: rotate(180deg) scale(1.15);
+  color: var(--accent);
+}
+
+.pillarTitle {
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text);
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+}
+
+.pillarText {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  flex-grow: 1;
+}
+
+.pillarGlow {
+  position: absolute;
+  bottom: -60%;
+  left: -10%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.pillar:hover .pillarGlow {
+  opacity: 1;
+}
+
+@keyframes pillarFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar {
+    animation: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+}

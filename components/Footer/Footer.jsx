@@ -1,22 +1,25 @@
+"use client";
+
 import styles from "./Footer.module.css";
+import { useT } from "@/components/LanguageProvider/LanguageProvider";
 
 export default function Footer() {
+  const { t } = useT();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
             <span className={styles.logo}>lizavetron</span>
-            <span className={styles.tagline}>
-              space of your transformation
-            </span>
+            <span className={styles.tagline}>{t.footer.tagline}</span>
           </div>
 
           <nav className={styles.nav} aria-label="footer navigation">
-            <a href="#about">обо мне</a>
-            <a href="#club">клуб</a>
-            <a href="#pricing">тарифы</a>
-            <a href="#individual">индивидуально</a>
+            <a href="#about">{t.footer.navAbout}</a>
+            <a href="#club">{t.footer.navClub}</a>
+            <a href="#pricing">{t.footer.navPricing}</a>
+            <a href="#individual">{t.footer.navIndividual}</a>
           </nav>
 
           <div className={styles.socials}>
@@ -70,13 +73,13 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.signature}>
-            with love, <em>lizavetron</em>
+            {t.footer.signature} <em>lizavetron</em>
             <span className={styles.heart} aria-hidden>
               ♡
             </span>
           </p>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} · made gently
+            © {new Date().getFullYear()} · {t.footer.copyright}
           </p>
         </div>
       </div>

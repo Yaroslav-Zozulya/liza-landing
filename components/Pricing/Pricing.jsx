@@ -1,69 +1,38 @@
+"use client";
+
 import Reveal from "../Reveal/Reveal";
 import styles from "./Pricing.module.css";
-
-const plans = [
-  {
-    id: "month",
-    duration: "1 месяц",
-    price: "10",
-    perks: ["доступ ко всем практикам", "медитации и лекции", "поддержка чата"],
-    cta: "попробовать",
-    highlighted: false,
-    note: "начать мягко",
-  },
-  {
-    id: "quarter",
-    duration: "3 месяца",
-    price: "25",
-    perks: [
-      "всё из тарифа на месяц",
-      "выгоднее в 1.5 раза",
-      "достаточно времени для перемен",
-    ],
-    cta: "занять место",
-    highlighted: true,
-    badge: "most loved ♡",
-    note: "оптимально для трансформации",
-  },
-  {
-    id: "year",
-    duration: "1 год",
-    price: "111",
-    perks: [
-      "всё из клуба весь год",
-      "максимальная выгода",
-      "глубокая практика",
-    ],
-    cta: "идти в долгую",
-    highlighted: false,
-    note: "для тех, кто остаётся",
-  },
-];
+import { useT } from "@/components/LanguageProvider/LanguageProvider";
 
 export default function Pricing() {
+  const { t } = useT();
+
   return (
     <section id="pricing" className={styles.pricing}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <Reveal>
-            <p className={styles.kicker}>тарифы</p>
+            <p className={styles.kicker}>{t.pricing.kicker}</p>
           </Reveal>
           <Reveal delay={120}>
             <h2 className={styles.title}>
-              выбери свой <em>ритм</em>
+              {t.pricing.titleLead} <em>{t.pricing.titleEm}</em>
             </h2>
           </Reveal>
           <Reveal delay={220}>
             <p className={styles.subtitle}>
-              три формата участия — на месяц, чтобы прислушаться,
-              <br />
-              и на дольше, чтобы по-настоящему углубиться
+              {t.pricing.subtitle.split("\n").map((line, i, arr) => (
+                <span key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </p>
           </Reveal>
         </div>
 
         <div className={styles.grid}>
-          {plans.map((plan, i) => (
+          {t.pricing.plans.map((plan, i) => (
             <Reveal
               key={plan.id}
               delay={i * 140}
@@ -119,9 +88,7 @@ export default function Pricing() {
         </div>
 
         <Reveal delay={400}>
-          <p className={styles.legal}>
-            оплата в долларах · доступ открывается сразу после оплаты
-          </p>
+          <p className={styles.legal}>{t.pricing.legal}</p>
         </Reveal>
       </div>
     </section>

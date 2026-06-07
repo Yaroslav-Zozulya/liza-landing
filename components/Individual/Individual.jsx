@@ -1,37 +1,33 @@
+"use client";
+
 import Reveal from "../Reveal/Reveal";
 import styles from "./Individual.module.css";
-
-const services = [
-  { name: "расклад таро", price: "от 3$", symbol: "✦" },
-  { name: "сессия МАК (метафорические карты)", price: "от 15$", symbol: "✸" },
-  { name: "трансформационная игра Лила", price: "от 15$", symbol: "✺" },
-  { name: "онлайн-йога (персонально)", price: "от 11$", symbol: "✿" },
-];
+import { useT } from "@/components/LanguageProvider/LanguageProvider";
 
 export default function Individual() {
+  const { t } = useT();
+
   return (
     <section id="individual" className={styles.individual}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <Reveal>
-            <p className={styles.kicker}>1 : 1 sessions</p>
+            <p className={styles.kicker}>{t.individual.kicker}</p>
           </Reveal>
           <Reveal delay={120}>
             <h2 className={styles.title}>
-              индивидуальная <em>работа</em>
+              {t.individual.titleLead} <em>{t.individual.titleEm}</em>
             </h2>
           </Reveal>
           <Reveal delay={220}>
             <p className={styles.subtitle}>
-              жду тебя на своих сессиях онлайн, чтобы вместе раскрыть новые
-              инструменты, которые станут твоим внутренним якорем{" "}
-              <span aria-hidden>🪷</span>
+              {t.individual.subtitle} <span aria-hidden>🪷</span>
             </p>
           </Reveal>
         </div>
 
         <ul className={styles.list}>
-          {services.map((s, i) => (
+          {t.individual.services.map((s, i) => (
             <Reveal key={s.name} as="li" delay={i * 100} className={styles.itemWrap}>
               <div className={styles.item}>
                 <span className={styles.symbol} aria-hidden="true">
@@ -52,7 +48,7 @@ export default function Individual() {
             rel="noopener noreferrer"
             className={styles.cta}
           >
-            написать в лс для деталей
+            {t.individual.cta}
             <span className={styles.ctaArrow} aria-hidden="true">
               ↩
             </span>
